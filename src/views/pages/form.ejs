@@ -1,0 +1,25 @@
+<%- include("../partials/header.ejs") %>
+
+<form method="POST" action="/newMessage">
+  <div class="mb-3">
+    <label for="name" class="form-label">Your name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      aria-describedby="nameHelp"
+      autofocus
+    />
+    <div id="nameHelp" class="form-text">
+      This is a temporary way to request name, obv.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="message" class="form-label">Message</label>
+    <hr />
+    <textarea name="message" id="message" rows="15" cols="100"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<%- include("../partials/footer.ejs") %>

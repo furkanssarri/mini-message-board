@@ -1,4 +1,12 @@
     <%- include ("../partials/header.ejs" ) %>
-    <main class="container"></main>
+    <main class="container py-5">
+      <% messages.map((message) => { %>
+        <li class="message">
+          <span><%= message.user %></span>
+          <p><%= message.text %></p>
+          <span><%= message.added %></span>
+        </li>
+      <% }) %>
+    </main>
 
     <%- include("../partials/footer.ejs") %>
