@@ -80,7 +80,6 @@ mini-message-board/
 │       └── partials/
 │           ├── header.ejs
 │           └── footer.ejs
-├── public/
 ├── package.json
 ├── package-lock.json
 └── README.md
