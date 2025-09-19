@@ -40,13 +40,13 @@ git clone <repository-url>
 cd mini-message-board
 ```
 
-2. **Install dependencies**
+1. **Install dependencies**
 
 ```bash
 npm install
 ```
 
-3. **Start the server**
+1. **Start the server**
 
 From the root directory:
 
@@ -54,7 +54,7 @@ From the root directory:
 node src/app.js
 ```
 
-4. **Navigate to whatever port you specified**
+1. **Navigate to whatever port you specified**
 
 ```txt
 http://localhost:PORT
