@@ -15,4 +15,13 @@ indexRouter.get("/messages/:messageId", (req, res) => {
   });
 });
 
+indexRouter.post("/messages/:messageId/delete", (req, res) => {
+  const { messageId } = req.params;
+  const index = messages.findIndex((msg) => msg.id === messageId);
+  if (index !== -1) {
+    messages.splice(index, 1);
+  }
+  res.redirect("/");
+});
+
 module.exports = indexRouter;
