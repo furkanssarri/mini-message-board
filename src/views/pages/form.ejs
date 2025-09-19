@@ -1,25 +1,70 @@
 <%- include("../partials/header.ejs") %>
 
-<form method="POST" action="/newMessage">
-  <div class="mb-3">
-    <label for="name" class="form-label">Your name</label>
-    <input
-      type="text"
-      class="form-control"
-      id="name"
-      aria-describedby="nameHelp"
-      autofocus
-    />
-    <div id="nameHelp" class="form-text">
-      This is a temporary way to request name, obv.
+<main class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card shadow-sm bg-body text-body border-0">
+        <div class="card-body p-4">
+          <h2 class="text-center mb-4">Post a New Message</h2>
+
+          <% if (error) { %>
+            <div class="alert alert-danger text-center" role="alert">
+              <%= error %>
+            </div>
+          <% } %>
+
+          <form method="POST" action="/new" id="messageForm" novalidate>
+            <div class="mb-3">
+              <label for="user" class="form-label">Your Name</label>
+              <input
+                type="text"
+                name="user"
+                class="form-control"
+                id="user"
+                placeholder="Enter your name"
+                required
+                autofocus
+              />
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea
+                name="text"
+                id="message"
+                class="form-control"
+                rows="6"
+                placeholder="Write your message..."
+                required
+              ></textarea>
+              <div class="invalid-feedback">Please write a message.</div>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="mb-3">
-    <label for="message" class="form-label">Message</label>
-    <hr />
-    <textarea name="message" id="message" rows="15" cols="100"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</main>
+
+<script>
+  (function () {
+    "use strict";
+    const form = document.getElementById("messageForm");
+    form.addEventListener("submit", function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add("was-validated");
+    });
+  })();
+</script>
 
 <%- include("../partials/footer.ejs") %>

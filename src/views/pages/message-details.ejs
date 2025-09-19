@@ -1,0 +1,42 @@
+<%- include("../partials/header.ejs") %>
+
+<main class="container flex-fill py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <div class="card shadow-sm bg-body text-body border-0">
+        <div class="card-body p-4">
+          <h2 class="card-title mb-4 text-center">
+            Message Details
+          </h2>
+
+          <!-- User -->
+          <div class="mb-3">
+            <span class="fw-semibold">User:</span>
+            <span class="text-primary"><%= message.user %></span>
+          </div>
+
+          <!-- Text -->
+          <div class="mb-3">
+            <span class="fw-semibold">Message:</span>
+            <p class="border rounded p-3 bg-body-tertiary"><%= message.text %></p>
+          </div>
+
+          <!-- Added Date -->
+          <div class="mb-3">
+            <span class="fw-semibold">Added:</span>
+            <span class="text-muted"><%= message.added %></span>
+          </div>
+
+          <!-- Back Button -->
+          <div class="text-center mt-4">
+            <a href="/" class="btn btn-outline-primary">
+              <i class="bi bi-arrow-left-circle me-1"></i> Back to Messages
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include("../partials/footer.ejs") %>

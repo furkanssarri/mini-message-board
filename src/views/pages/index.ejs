@@ -1,12 +1,34 @@
-    <%- include ("../partials/header.ejs" ) %>
-    <main class="container py-5">
-      <% messages.map((message) => { %>
-        <li class="message">
-          <span><%= message.user %></span>
-          <p><%= message.text %></p>
-          <span><%= message.added %></span>
-        </li>
-      <% }) %>
-    </main>
+<%- include("../partials/header.ejs") %>
 
-    <%- include("../partials/footer.ejs") %>
+<main class="container flex-fill py-5">
+  <h1 class="text-center mb-5">Messages</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <ul class="list-group shadow-sm">
+        <% if (messages.length === 0) { %>
+          <li class="list-group-item text-center text-muted py-4">
+            No messages yet. Be the first to post!
+          </li>
+        <% } else { %>
+          <% messages.forEach((message) => { %>
+            <li class="list-group-item p-4">
+              <a href="/messages/<%= message.id %>" class="text-decoration-none text-body">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="fw-semibold">
+                    <i class="bi bi-person-circle me-1"></i>
+                    <%= message.user %>
+                  </span>
+                  <small class="text-muted"><%= message.added %></small>
+                </div>
+                <p class="mb-0"><%= message.text %></p>
+              </a>
+            </li>
+          <% }) %>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<%- include("../partials/footer.ejs") %>
