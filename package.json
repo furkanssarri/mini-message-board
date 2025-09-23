@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "evho 'No build required.'",
+    "build": "echo 'No build required.'",
     "start": "node src/app."
   },
   "repository": {
