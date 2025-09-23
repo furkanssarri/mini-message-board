@@ -15,7 +15,7 @@ Key objectives of this project include:
 
 ## Links
 
-Please find a link to the project [demo](https:www.github.com/furkanssarri).
+Please find a link to the project [demo](https://mini-message-board-isu9.onrender.com/).
 
 ## Dependencies
 
