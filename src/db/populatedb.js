@@ -7,13 +7,13 @@ const SCHEMA = `
 CREATE TABLE IF NOT EXISTS messages (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   text VARCHAR(255),
-  "user" VARCHAR(50),
+  username VARCHAR(50),
   added TIMESTAMP DEFAULT NOW()
 );
 `;
 
 const SEED = `
-INSERT INTO messages (text, "user")
+INSERT INTO messages (text, username)
 VALUES
   ('Hi there!', 'Amando'),
   ('Hello world!', 'Charles')

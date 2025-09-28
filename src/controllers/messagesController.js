@@ -32,7 +32,7 @@ exports.messageAddPost = async (req, res) => {
       });
     }
 
-    await db.addNewMessage({ user, text });
+    await db.addNewMessage({ username, text });
     res.redirect("/");
   } catch (err) {
     console.error(err);

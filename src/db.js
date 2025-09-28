@@ -12,9 +12,9 @@ async function getMessage(id) {
   return row;
 }
 
-async function addNewMessage({ user, text }) {
-  await pool.query('INSERT INTO messages (text, "user")VALUES ($1, $2)', [
-    user,
+async function addNewMessage({ username, text }) {
+  await pool.query("INSERT INTO messages (text, username) VALUES ($1, $2)", [
+    username,
     text,
   ]);
 }
