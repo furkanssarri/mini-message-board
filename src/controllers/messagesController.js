@@ -24,15 +24,15 @@ exports.messageGet = async (req, res) => {
 
 exports.messageAddPost = async (req, res) => {
   try {
-    const { user, text } = req.body;
-    if (!text || !user || text.trim() === "" || user.trim() === "") {
+    const { text, username } = req.body;
+    if (!text || !username || text.trim() === "" || username.trim() === "") {
       return res.status(400).render("pages/form", {
         title: "New Message",
         error: "Please fill out the required form fields.",
       });
     }
 
-    await db.addNewMessage({ username, text });
+    await db.addNewMessage({ text, username });
     res.redirect("/");
   } catch (err) {
     console.error(err);

@@ -12,10 +12,10 @@ async function getMessage(id) {
   return row;
 }
 
-async function addNewMessage({ username, text }) {
+async function addNewMessage({ text, username }) {
   await pool.query("INSERT INTO messages (text, username) VALUES ($1, $2)", [
-    username,
     text,
+    username,
   ]);
 }
 
