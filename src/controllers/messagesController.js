@@ -23,7 +23,7 @@ exports.messageGet = async (req, res) => {
     const message = await db.getMessage(id);
     if (!message) return res.status(404).send("Message not found");
 
-    res.render("pages/message-details", { message });
+    res.render("pages/message-details", { title: "Message", message });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
