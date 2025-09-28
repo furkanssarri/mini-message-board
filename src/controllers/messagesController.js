@@ -1,3 +1,4 @@
+const { format } = require("date-fns");
 const db = require("../db.js");
 
 exports.messagesGet = async (_req, res) => {
@@ -16,14 +17,16 @@ exports.messagesGet = async (_req, res) => {
 
 exports.messageGet = async (req, res) => {
   try {
-    const { messageId } = req.params;
-    const message = await db.getMessage(messageId);
-    res.render("pages/message-details", {
-      title: "Message Details",
-      message: message,
-    });
+    const id = parseInt(req.params.messageId, 10);
+    if (isNaN(id)) return res.status(400).send("Invalid message id");
+
+    const message = await db.getMessage(id);
+    if (!message) return res.status(404).send("Message not found");
+
+    res.render("pages/message-details", { message });
   } catch (err) {
     console.error(err);
+    res.status(500).send("Server error");
   }
 };
 
