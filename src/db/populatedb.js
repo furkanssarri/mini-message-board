@@ -37,7 +37,14 @@ async function main() {
     await client.query(SCHEMA);
 
     // 2. Insert seed rows only if not already present
-    await client.query(SEED);
+
+    if (process.env.NODE_ENV !== "production") {
+      // Only seed data in local/dev environments
+      await client.query(SEED);
+      console.log("✅ Dummy data seeded (local only)");
+    } else {
+      console.log("ℹ️ Skipped seeding dummy data (production)");
+    }
 
     console.log("✅ Database seeded successfully");
   } catch (err) {
