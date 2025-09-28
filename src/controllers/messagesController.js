@@ -31,12 +31,8 @@ exports.messageAddPost = async (req, res) => {
         error: "Please fill out the required form fields.",
       });
     }
-    const newMessage = {
-      text,
-      user,
-    };
 
-    await db.addNewMessage(newMessage);
+    await db.addNewMessage({ user, text });
     res.redirect("/");
   } catch (err) {
     console.error(err);

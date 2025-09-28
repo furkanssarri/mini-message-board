@@ -7,13 +7,13 @@ const SCHEMA = `
 CREATE TABLE IF NOT EXISTS messages (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   text VARCHAR(255),
-  username VARCHAR(50),
+  "user" VARCHAR(50),
   added TIMESTAMP DEFAULT NOW()
 );
 `;
 
 const SEED = `
-INSERT INTO messages (text, username)
+INSERT INTO messages (text, "user")
 VALUES
   ('Hi there!', 'Amando'),
   ('Hello world!', 'Charles')
@@ -44,6 +44,7 @@ async function main() {
     console.error("❌ Error seeding database:", err);
   } finally {
     await client.end();
+    process.exit(0);
   }
 }
 
