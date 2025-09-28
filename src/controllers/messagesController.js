@@ -3,7 +3,12 @@ const db = require("../db.js");
 exports.messagesGet = async (_req, res) => {
   try {
     const messages = await db.getMessages();
-    res.render("pages/index", { title: "Home", messages: messages });
+    // Format each message's timestamp
+    const formattedMessages = messages.map((msg) => ({
+      ...msg,
+      added: format(new Date(msg.added), "dd/MM/yyyy"),
+    }));
+    res.render("pages/index", { title: "Home", messages: formattedMessages });
   } catch (err) {
     console.error(err);
   }
