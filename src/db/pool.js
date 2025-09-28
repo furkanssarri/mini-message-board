@@ -1,6 +1,11 @@
-require("dotenv").config();
 const { Pool } = require("pg");
+require("dotenv").config();
 
-module.exports = new Pool({
+const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // required for Render-hosted Postgres
+  },
 });
+
+module.exports = pool;
